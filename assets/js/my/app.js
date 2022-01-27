@@ -1,5 +1,5 @@
 var base_url = $("meta#base_url").attr("content");
-// console.clear()
+console.clear()
 let produkTypeHandler = function () {
    if ($("#produk-table").length > 0) {
       $(document).on("click", "#delete-produk", function () {

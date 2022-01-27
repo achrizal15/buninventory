@@ -48,6 +48,20 @@
                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
+                           <label for="validationCustom02">Satuan</label>
+                           <select name="satuan" class="form-control" required>
+                              <option selected value="" hidden>Pilih Satu</option>
+                              <?php foreach ($satuan as $key => $value) :  ?>
+                                 <?php if ($produk->satuan_id == $value->id) :  ?>
+                                    <option selected value="<?= $value->id ?>"><?= ucwords($value->nama)  ?></option>
+                                 <?php else :  ?>
+                                    <option value="<?= $value->id ?>"><?= ucwords($value->nama)  ?></option>
+                                 <?php endif;  ?>
+                              <?php endforeach;  ?>
+                           </select>
+                           <div class="invalid-feedback">Tidak boleh kosong</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
                            <label for="validationCustom02">Gudang</label>
                            <select name="gudang" class="form-control" required>
                               <option selected value="" hidden>Pilih Satu</option>

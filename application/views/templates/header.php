@@ -74,6 +74,15 @@
                      </ul>
                   </div>
                </li>
+               <li class="panel">
+                  <a href="#distributor" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("distributorcontroller") ?>"><i class="ti-truck"></i></i> <span class="title">Distributor</span> <i class="icon-submenu ti-angle-left"></i></a>
+                  <div id="distributor" class="collapse">
+                     <ul class="submenu">
+                        <li><a href="<?= base_url("distributorcontroller") ?>" class="">Daftar Distributor</a></li>
+                        <li><a href="<?= base_url("distributorcontroller") ?>" class="">Tambah Distributor</a></li>
+                     </ul>
+                  </div>
+               </li>
             </ul>
          </nav>
       </div>

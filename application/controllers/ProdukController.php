@@ -8,6 +8,7 @@ class ProdukController extends CI_Controller
       $this->load->library("main_libraries");
       $this->load->model("Produkmodels", "pm");
       $this->load->model("Gudangmodels", "gm");
+      $this->load->model("Satuanmodels", "sm");
       $this->load->library('session');
    }
    public function index($params = "view", $id = "")
@@ -17,12 +18,14 @@ class ProdukController extends CI_Controller
          $data["aksi"] = $params;
          $data["kodeproduk"] = $this->pm->get_last();
          $data["gudang"] = $this->gm->get_all();
+         $data["satuan"] = $this->sm->get_all();
       } elseif ($params == "edit") {
        
          $data["aksi"] = $params;
          $view = "produk_form";
          $data["gudang"] = $this->gm->get_all();
          $data["produk"] = $this->pm->get($id);
+         $data["satuan"] = $this->sm->get_all();
          if (!$data["produk"]) show_404();
       } else {
          $view = "produk_view";
@@ -36,6 +39,7 @@ class ProdukController extends CI_Controller
          "nama" => $this->input->post("nama"),
          "kode" => $this->input->post("kode"),
          "gudang_id" => $this->input->post("gudang"),
+         "satuan_id" => $this->input->post("satuan"),
          "stok_awal" => $this->input->post("stok_awal"),
          "harga_beli" => $this->input->post("harga_beli"),
          "harga_jual" => $this->input->post("harga_jual"),
@@ -55,6 +59,7 @@ class ProdukController extends CI_Controller
          "nama" => $this->input->post("nama"),
          "kode" => $this->input->post("kode"),
          "gudang_id" => $this->input->post("gudang"),
+         "satuan_id" => $this->input->post("satuan"),
          "stok_awal" => $this->input->post("stok_awal"),
          "harga_beli" => $this->input->post("harga_beli"),
          "harga_jual" => $this->input->post("harga_jual"),

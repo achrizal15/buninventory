@@ -26,7 +26,8 @@
             </div>
             <div class="card-body">
               <?php echo $this->session->flashdata("message") ? custom_alert_messages("", $this->session->flashdata("message")) : "" ?>
-              <table class="table table-bordered" id="produk-table">
+             <div style="overflow-x: auto;">
+              <table class="table table-bordered" id="produk-table" style="width: 110%;">
                 <thead>
                   <tr>
                     <th>KODE</th>
@@ -37,6 +38,7 @@
                     <th>HARGA BELI</th>
                     <th>HARGA JUAL</th>
                     <th>GUDANG</th>
+                    <th>SATUAN</th>
                     <th>CREATED AT</th>
                     <th>ACTION</th>
                   </tr>
@@ -54,6 +56,7 @@
                       <td class="align-middle">Rp.<?= number_format($value->pharga_beli, 2, ",", "."); ?></td>
                       <td class="align-middle">Rp.<?= number_format($value->pharga_jual, 2, ",", "."); ?></td>
                       <td class="align-middle"><?= ucwords($value->gnama)  ?></td>
+                      <td class="align-middle"><?= ucwords($value->snama)  ?></td>
                       <td class="align-middle"><?= date("d-m-Y", strtotime($value->pcreated_at))  ?></td>
                       <td class="align-middle">
                         <a href="<?= base_url("produkcontroller/index/edit/" . $value->pid) ?>" class="btn btn-warning text-white" title="Edit"><i class="fas fa-edit"></i><span class="sr-only">EDIT</span></a>
@@ -63,6 +66,7 @@
                   <?php endforeach;  ?>
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ class Produkmodels extends CI_Model
       $alias = [
          ["table" => "produk", "alias" => "p"],
          ["table" => "gudang", "alias" => "g"],
+         ["table" => "satuan", "alias" => "s"],
       ];
       $select="";
       foreach ($alias as $key) {
@@ -23,7 +24,8 @@ class Produkmodels extends CI_Model
       }
       $this->db->select($select);
       $this->db->from("produk as p");
-      $this->db->join("gudang as g","g.id=p.gudang_id");
+      $this->db->join("gudang as g","g.id=p.gudang_id","left");
+      $this->db->join("satuan as s","s.id=p.satuan_id","left");
       return $this->db->get()->result();
    }
 
