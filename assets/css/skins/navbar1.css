@@ -1,0 +1,8 @@
+.navbar {
+  background: #187fff;
+  background: -webkit-gradient(linear, left top, right top, from(#187fff), to(#6badff));
+  background: linear-gradient(to right, #187fff 0%, #6badff 100%); }
+  .navbar .search-form .form-control, .navbar .search-form .form-control:focus,
+  .navbar .search-form .btn,
+  .navbar .search-form .btn:focus {
+    background-color: #4c9bff; }

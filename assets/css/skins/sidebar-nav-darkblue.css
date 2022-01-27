@@ -1,0 +1,26 @@
+#wrapper .sidebar {
+  background-color: #2B333E; }
+
+.sidebar .nav li a {
+  color: #d6e1f1; }
+  .sidebar .nav li a:hover, .sidebar .nav li a:active:hover {
+    background-color: #272e38 !important; }
+
+.sidebar-minified .sidebar .nav > li:hover > a,
+.sidebar-minified .sidebar .nav > li:hover .collapse li:hover > a {
+  background-color: #2B333E; }
+
+.sidebar-minified .sidebar .collapse {
+  background: #2B333E; }
+
+.sidebar-minified .sidebar .nav > li:hover > a,
+.sidebar-minified .sidebar .nav li:hover > a > .title {
+  background: #29313b; }
+
+.btn-toggle-minified {
+  background: #252c35;
+  color: #d6e1f1;
+  border-color: #21272f; }
+  .btn-toggle-minified:focus, .btn-toggle-minified:hover {
+    color: #d6e1f1;
+    background: #232932; }
