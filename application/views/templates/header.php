@@ -13,7 +13,7 @@
 
    <!-- JQVMap css -->
    <link href="<?= base_url() ?>assets/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" type="text/css" />
-
+   <link href="<?= base_url() ?>assets/plugins/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
    <!-- Bootstrap Tour css -->
    <link href="<?= base_url() ?>assets/plugins/bootstrap-tour/bootstrap-tour-standalone.min.css" rel="stylesheet" type="text/css" />
 

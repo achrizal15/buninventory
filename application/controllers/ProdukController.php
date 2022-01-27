@@ -7,24 +7,67 @@ class ProdukController extends CI_Controller
       parent::__construct();
       $this->load->library("main_libraries");
       $this->load->model("Produkmodels", "pm");
+      $this->load->model("Gudangmodels", "gm");
+      $this->load->library('session');
    }
    public function index($params = "view", $id = "")
    {
-      if ($params == "view") {
-         $view = "produk_view";
-         $data["produk"] = $this->pm->get_all();
-         $this->main_libraries->innerview($view, $data);
-      } elseif ($params == "add") {
+      if ($params == "add") {
          $view = "produk_form";
-         $data["produk"] = $this->pm->get();
+         $data["aksi"] = $params;
+         $data["kodeproduk"] = $this->pm->get_last();
+         $data["gudang"] = $this->gm->get_all();
       } elseif ($params == "edit") {
-         // if ($id == "") show_404();
+       
+         $data["aksi"] = $params;
          $view = "produk_form";
+         $data["gudang"] = $this->gm->get_all();
          $data["produk"] = $this->pm->get($id);
+         if (!$data["produk"]) show_404();
       } else {
-         show_404();
+         $view = "produk_view";
+         $data["produk"] = $this->pm->get_all();         
       }
       $this->main_libraries->innerview($view, $data);
+   }
+   public function add()
+   {
+      $data = [
+         "nama" => $this->input->post("nama"),
+         "kode" => $this->input->post("kode"),
+         "gudang_id" => $this->input->post("gudang"),
+         "stok_awal" => $this->input->post("stok_awal"),
+         "harga_beli" => $this->input->post("harga_beli"),
+         "harga_jual" => $this->input->post("harga_jual"),
+         "gambar" => "default.png",
+      ];
+      if ($_FILES["gambar"]["name"]) {
+         $this->main_libraries->uploadImage("images/products");
+         $this->upload->do_upload('gambar');
+         $data["gambar"] = $this->upload->data("file_name");
+      }
+      $this->pm->create($data);
+      $this->session->set_flashdata('message', 'Produk baru telah ditambahkan.');
+      return redirect(base_url("produkcontroller"));
+   }
+   public function edit(){
+      $data = [
+         "nama" => $this->input->post("nama"),
+         "kode" => $this->input->post("kode"),
+         "gudang_id" => $this->input->post("gudang"),
+         "stok_awal" => $this->input->post("stok_awal"),
+         "harga_beli" => $this->input->post("harga_beli"),
+         "harga_jual" => $this->input->post("harga_jual"),
+      ];
+      $id=$this->input->post("id");
+      if ($_FILES["gambar"]["name"]) {
+         $this->main_libraries->uploadImage("images/products");
+         $this->upload->do_upload('gambar');
+         $data["gambar"] = $this->upload->data("file_name");
+      }
+      $this->pm->perbarui($id,$data);
+      $this->session->set_flashdata('message', 'Produk telah diperbarui.');
+      return redirect(base_url("produkcontroller"));
    }
    public function delete()
    {

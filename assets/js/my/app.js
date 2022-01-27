@@ -1,5 +1,5 @@
 var base_url = $("meta#base_url").attr("content");
-console.log(base_url)
+// console.clear()
 let produkTypeHandler = function () {
    if ($("#produk-table").length > 0) {
       $(document).on("click", "#delete-produk", function () {
@@ -21,7 +21,6 @@ let produkTypeHandler = function () {
                   data: { "id": id },
                   dataType: "json",
                   success: function (response) {
-                     console.log(response)
                      Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
