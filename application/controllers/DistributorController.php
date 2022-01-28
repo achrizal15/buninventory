@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 class DistributorController extends CI_Controller
@@ -7,13 +7,20 @@ class DistributorController extends CI_Controller
    {
       parent::__construct();
       $this->load->library("main_libraries");
-      $this->load->model("Produkmodels", "pm");
-      $this->load->model("Gudangmodels", "gm");
-      $this->load->model("Satuanmodels", "sm");
       $this->load->library('session');
+      $this->load->model("distributormodels", "dm");
    }
-public function index(){
-   echo 1;
-}
-
+   public function index()
+   {
+      $data["distributor"] = $this->dm->get_all();
+      $this->main_libraries->innerview("distributor_view", $data);
+   }
+   public function action($params)
+   {
+      $data["action"] = strtolower($params);
+      if ($params == "edit") {
+         echo 1;
+      } 
+      $this->main_libraries->innerview("distributor_form", $data);
+   }
 }

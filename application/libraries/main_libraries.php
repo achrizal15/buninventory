@@ -8,12 +8,6 @@ class Main_libraries
         {
                 $this->CI = &get_instance();
         }
-        public function innerview($view, $data = [])
-        {
-                $this->CI->load->view("templates/header", $data);
-                $this->CI->load->view($view, $data);
-                $this->CI->load->view("templates/footer", $data);
-        }
         public function uploadImage($path="")
         {
                 $config['upload_path']          = './assets/'.$path;
@@ -23,4 +17,11 @@ class Main_libraries
                 $config['max_height']           = 768;
                 $this->CI->load->library('upload', $config);
         }
+        public function innerview($view, $data = [])
+        {
+                $this->CI->load->view("templates/header", $data);
+                $this->CI->load->view($view, $data);
+                $this->CI->load->view("templates/footer", $data);
+        }
+     
 }

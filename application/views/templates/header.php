@@ -79,7 +79,7 @@
                   <div id="distributor" class="collapse">
                      <ul class="submenu">
                         <li><a href="<?= base_url("distributorcontroller") ?>" class="">Daftar Distributor</a></li>
-                        <li><a href="<?= base_url("distributorcontroller") ?>" class="">Tambah Distributor</a></li>
+                        <li><a href="<?= base_url("distributorcontroller/action/add") ?>" class="">Tambah Distributor</a></li>
                      </ul>
                   </div>
                </li>
