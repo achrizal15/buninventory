@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jan 2022 pada 03.00
+-- Waktu pembuatan: 28 Jan 2022 pada 20.24
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.24
 
@@ -42,11 +42,18 @@ CREATE TABLE `akses` (
 CREATE TABLE `distributor` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `telepon` int(11) NOT NULL,
+  `telepon` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `distributor`
+--
+
+INSERT INTO `distributor` (`id`, `nama`, `telepon`, `email`, `alamat`, `created_at`) VALUES
+(5, 'Doel', '08237818', 'doel@gmail.com', 'Kmonn', '2022-01-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -61,24 +68,14 @@ CREATE TABLE `gudang` (
   `kode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `laporan_barang`
+-- Dumping data untuk tabel `gudang`
 --
 
-CREATE TABLE `laporan_barang` (
-  `id` int(11) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `nama_distributor` varchar(255) NOT NULL,
-  `nama_product` varchar(255) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `harga` decimal(20,4) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `total_harga` decimal(20,4) NOT NULL,
-  `stok_awal` int(11) NOT NULL,
-  `stok_ahir` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `gudang` (`id`, `nama`, `created_at`, `kode`) VALUES
+(1, 'cafe', '2022-01-27 13:59:29', 'G01'),
+(2, 'pujasera', '2022-01-27 13:59:29', 'G02'),
+(4, 'Catering', '0000-00-00 00:00:00', 'G03');
 
 -- --------------------------------------------------------
 
@@ -90,14 +87,24 @@ CREATE TABLE `produk` (
   `id` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `kode` varchar(255) NOT NULL,
-  `stok_awal` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga_beli` decimal(20,4) NOT NULL,
   `harga_jual` decimal(20,4) NOT NULL,
   `gambar` varchar(255) NOT NULL,
   `gudang_id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL,
+  `satuan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `produk`
+--
+
+INSERT INTO `produk` (`id`, `nama`, `kode`, `qty`, `harga_beli`, `harga_jual`, `gambar`, `gudang_id`, `created_at`, `satuan_id`) VALUES
+(12, 'Pop mie nasi', 'P011', 20, '321.0000', '233.0000', 'ruijie.png', 1, '2022-01-27 00:00:00', 4),
+(14, 'Kain', 'P013', 321, '244444.0000', '32144.0000', 'default.png', 2, '2022-01-27 00:00:00', 2),
+(15, 'Coba', 'P014', 0, '321.0000', '123.0000', 'default.png', 1, '2022-01-27 00:00:00', 1),
+(16, 'Masako', 'P015', 100, '321.0000', '213.0000', 'default.png', 2, '2022-01-28 00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -142,6 +149,15 @@ CREATE TABLE `satuan` (
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `satuan`
+--
+
+INSERT INTO `satuan` (`id`, `nama`, `created_at`) VALUES
+(2, 'Kardus', '2022-01-27 14:50:29'),
+(3, 'Biji', '0000-00-00 00:00:00'),
+(4, 'Liter', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -150,7 +166,7 @@ CREATE TABLE `satuan` (
 
 CREATE TABLE `tr_stok_keluar` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
   `kepada` varchar(255) NOT NULL,
   `nama_kapal` varchar(255) NOT NULL,
   `qty` int(11) NOT NULL,
@@ -167,13 +183,25 @@ CREATE TABLE `tr_stok_keluar` (
 
 CREATE TABLE `tr_stok_masuk` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
   `distributor_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `catatan` text NOT NULL,
   `created_at` int(11) NOT NULL,
-  `faktur` varchar(255) NOT NULL
+  `faktur` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tr_stok_masuk`
+--
+
+INSERT INTO `tr_stok_masuk` (`id`, `produk_id`, `distributor_id`, `qty`, `catatan`, `created_at`, `faktur`) VALUES
+(2, 12, 4, 10, '', 2022, ''),
+(3, 12, 4, 10, 'Baru saja dirubah', 2022, ''),
+(4, 12, 4, 10, '', 2022, NULL),
+(5, 14, 4, 321, '', 2022, 'FK'),
+(7, 13, 5, 5, '', 2022, 'Kuntul'),
+(9, 16, 5, 100, '', 2022, 'COBA LAGI');
 
 -- --------------------------------------------------------
 
@@ -262,19 +290,19 @@ ALTER TABLE `akses`
 -- AUTO_INCREMENT untuk tabel `distributor`
 --
 ALTER TABLE `distributor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `gudang`
 --
 ALTER TABLE `gudang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `role`
@@ -286,7 +314,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT untuk tabel `satuan`
 --
 ALTER TABLE `satuan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tr_stok_keluar`
@@ -298,7 +326,7 @@ ALTER TABLE `tr_stok_keluar`
 -- AUTO_INCREMENT untuk tabel `tr_stok_masuk`
 --
 ALTER TABLE `tr_stok_masuk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
