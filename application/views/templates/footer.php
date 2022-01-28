@@ -43,6 +43,8 @@
 <script src="<?= base_url() ?>assets/js/pages/forms-dragdropupload.init.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/parsleyjs/parsley.min.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/forms-validations.init.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/select2/select2.min.js"></script>
+<script src="<?= base_url() ?>assets/js/pages/forms-select2.init.js"></script>
 
 <script src="<?= base_url() ?>assets/js/pages/dashboard.init.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/ui-dragdroppanel.init.min.js"></script>

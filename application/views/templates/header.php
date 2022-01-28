@@ -17,6 +17,7 @@
    <!-- Bootstrap Tour css -->
     <link href="<?= base_url() ?>assets/plugins/bootstrap-tour/bootstrap-tour-standalone.min.css" rel="stylesheet" type="text/css" />
    <!-- App css -->
+   <link href="<?= base_url() ?>assets/plugins/select2/select2.min.css" rel="stylesheet">
    <link href="<?= base_url() ?>assets/css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
    <link href="<?= base_url() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
@@ -84,6 +85,24 @@
                      <ul class="submenu">
                         <li><a href="<?= base_url("distributorcontroller") ?>" class="">Daftar Distributor</a></li>
                         <li><a href="<?= base_url("distributorcontroller/action/add") ?>" class="">Tambah Distributor</a></li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="panel">
+                  <a href="#trstokmasuk" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("trstokmasukcontroller") ?>"><i class="fa-solid fa-cart-flatbed"></i> <span class="title">Barang Masuk</span> <i class="icon-submenu ti-angle-left"></i></a>
+                  <div id="trstokmasuk" class="collapse">
+                     <ul class="submenu">
+                        <li><a href="<?= base_url("trstokmasukcontroller") ?>" class="">Daftar Barang Masuk</a></li>
+                        <li><a href="<?= base_url("trstokmasukcontroller/action/add") ?>" class="">Tambah Barang Masuk</a></li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="panel">
+                  <a href="#trstokkeluar" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("trstokkeluarcontroller") ?>"><i class="fa-solid fa-dolly"></i> <span class="title">Barang Keluar</span> <i class="icon-submenu ti-angle-left"></i></a>
+                  <div id="trstokkeluar" class="collapse">
+                     <ul class="submenu">
+                        <li><a href="<?= base_url("trstokkeluarcontroller") ?>" class="">Daftar Barang Masuk</a></li>
+                        <li><a href="<?= base_url("trstokkeluarcontroller/action/add") ?>" class="">Tambah Barang Masuk</a></li>
                      </ul>
                   </div>
                </li>

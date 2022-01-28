@@ -33,7 +33,6 @@
                       <th>KODE</th>
                       <th>GAMBAR</th>
                       <th>NAMA</th>
-                      <th class="text-nowrap">STOK AWAL</th>
                       <th>QTY</th>
                       <th class="text-nowrap">HARGA BELI</th>
                       <th  class="text-nowrap">HARGA JUAL</th>
@@ -51,7 +50,6 @@
                           <img width="100" src="<?= base_url("assets/images/products/") . $value->pgambar ?>" alt="">
                         </td>
                         <td class="align-middle"><?= ucwords($value->pnama) ?></td>
-                        <td class="align-middle"><?= $value->pstok_awal  ?></td>
                         <td class="align-middle"><?= $value->pqty  ?></td>
                         <td class="align-middle">Rp.<?= number_format($value->pharga_beli, 2, ",", "."); ?></td>
                         <td class="align-middle">Rp.<?= number_format($value->pharga_jual, 2, ",", "."); ?></td>

@@ -15,7 +15,7 @@ class DistributorController extends CI_Controller
       $data["distributor"] = $this->dm->get_all();
       $this->main_libraries->innerview("distributor_view", $data);
    }
-   public function action($params = "add", $id)
+   public function action($params = "add", $id="")
    {
       $data["aksi"] = strtolower($params);
       if ($params == "edit") {

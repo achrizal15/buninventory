@@ -40,7 +40,6 @@ class ProdukController extends CI_Controller
          "kode" => $this->input->post("kode"),
          "gudang_id" => $this->input->post("gudang"),
          "satuan_id" => $this->input->post("satuan"),
-         "stok_awal" => $this->input->post("stok_awal"),
          "harga_beli" => $this->input->post("harga_beli"),
          "harga_jual" => $this->input->post("harga_jual"),
          "gambar" => "default.png",
@@ -60,7 +59,6 @@ class ProdukController extends CI_Controller
          "kode" => $this->input->post("kode"),
          "gudang_id" => $this->input->post("gudang"),
          "satuan_id" => $this->input->post("satuan"),
-         "stok_awal" => $this->input->post("stok_awal"),
          "harga_beli" => $this->input->post("harga_beli"),
          "harga_jual" => $this->input->post("harga_jual"),
       ];
