@@ -44,7 +44,6 @@
 <script src="<?= base_url() ?>assets/plugins/parsleyjs/parsley.min.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/forms-validations.init.min.js"></script>
 
-<!-- Init -->
 <script src="<?= base_url() ?>assets/js/pages/dashboard.init.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/ui-dragdroppanel.init.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

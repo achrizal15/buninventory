@@ -21,13 +21,13 @@ class Distributormodels extends CI_Model
 
    public function delete($id)
    {
-      $this->db->delete("produk", ["id" => $id]);
+      $this->db->delete("distributor", ["id" => $id]);
       return $this->db->affected_rows();
    }
    public function get($id = "")
    {
       $this->db->select("*");
-      $this->db->from("produk");
+      $this->db->from("distributor");
       $this->db->where("id", $id);
       return $this->db->get()->row();
    }
@@ -40,13 +40,13 @@ class Distributormodels extends CI_Model
    }
    public function perbarui($id, $data)
    {
-      $this->db->update("produk", $data, ["id" => $id]);
+      $this->db->update("distributor", $data, ["id" => $id]);
       return $this->db->affected_rows();
    }
    public function create($data)
    {
       $data["created_at"] = date("Y-m-d", strtotime("now"));
-      $this->db->insert("produk", $data);
+      $this->db->insert("distributor", $data);
       return $this->db->affected_rows();
    }
 }

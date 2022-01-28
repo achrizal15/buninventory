@@ -15,8 +15,7 @@
    <link href="<?= base_url() ?>assets/plugins/jqvmap/jqvmap.min.css" rel="stylesheet" type="text/css" />
    <link href="<?= base_url() ?>assets/plugins/dropify/css/dropify.min.css" rel="stylesheet" type="text/css" />
    <!-- Bootstrap Tour css -->
-   <link href="<?= base_url() ?>assets/plugins/bootstrap-tour/bootstrap-tour-standalone.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="<?= base_url() ?>assets/plugins/bootstrap-tour/bootstrap-tour-standalone.min.css" rel="stylesheet" type="text/css" />
    <!-- App css -->
    <link href="<?= base_url() ?>assets/css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
    <link href="<?= base_url() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
@@ -73,6 +72,11 @@
                         <li><a href="<?= base_url("produkcontroller/index/add") ?>" class="">Tambah Produk</a></li>
                      </ul>
                   </div>
+               </li>
+               <li>
+                  <a href="<?= base_url("gudangcontroller") ?>" class="<?= active_sidebar("gudangcontroller") ?>">
+                     <i class="ti-folder"></i> <span class="title">Gudang Satuan</span>
+                  </a>
                </li>
                <li class="panel">
                   <a href="#distributor" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("distributorcontroller") ?>"><i class="ti-truck"></i></i> <span class="title">Distributor</span> <i class="icon-submenu ti-angle-left"></i></a>

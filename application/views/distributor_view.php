@@ -47,8 +47,8 @@
                                     <td class="align-middle"><?= $value->alamat  ?></td>
                                     <td class="align-middle"><?= date("d-m-Y", strtotime($value->created_at))  ?></td>
                                     <td class="align-middle">
-                                       <a href="<?= base_url("produkcontroller/index/edit/" . $value->id) ?>" class="btn btn-warning text-white" title="Edit"><i class="fas fa-edit"></i><span class="sr-only">EDIT</span></a>
-                                       <a id="delete-produk" data-id="<?= $value->id ?>" class="btn btn-danger text-white" title="Delete"><i class="fa fa-trash-o"></i> <span class="sr-only">Delete</span></a>
+                                       <a href="<?= base_url("distributorcontroller/action/edit/" . $value->id) ?>" class="btn btn-warning text-white" title="Edit"><i class="fas fa-edit"></i><span class="sr-only">EDIT</span></a>
+                                       <a id="delete-distributor" data-id="<?= $value->id ?>" class="btn btn-danger text-white" title="Delete"><i class="fa fa-trash-o"></i> <span class="sr-only">Delete</span></a>
                                     </td>
                                  </tr>
                               <?php endforeach;  ?>

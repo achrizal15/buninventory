@@ -26,46 +26,46 @@
             </div>
             <div class="card-body">
               <?php echo $this->session->flashdata("message") ? custom_alert_messages("", $this->session->flashdata("message")) : "" ?>
-             <div style="overflow-x: auto;">
-              <table class="table table-bordered" id="produk-table" style="width: 110%;">
-                <thead>
-                  <tr>
-                    <th>KODE</th>
-                    <th>GAMBAR</th>
-                    <th>NAMA</th>
-                    <th>STOK AWAL</th>
-                    <th>QTY</th>
-                    <th>HARGA BELI</th>
-                    <th>HARGA JUAL</th>
-                    <th>GUDANG</th>
-                    <th>SATUAN</th>
-                    <th>CREATED AT</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($produk as $key => $value) : ?>
+              <div class="table-responsive">
+                <table class="table table-bordered" id="produk-table" width="120%">
+                  <thead>
                     <tr>
-                      <td class="align-middle"><?= $value->pkode  ?></td>
-                      <td class="align-middle">
-                        <img width="100" src="<?= base_url("assets/images/products/") . $value->pgambar ?>" alt="">
-                      </td>
-                      <td class="align-middle"><?= ucwords($value->pnama) ?></td>
-                      <td class="align-middle"><?= $value->pstok_awal  ?></td>
-                      <td class="align-middle"><?= $value->pqty  ?></td>
-                      <td class="align-middle">Rp.<?= number_format($value->pharga_beli, 2, ",", "."); ?></td>
-                      <td class="align-middle">Rp.<?= number_format($value->pharga_jual, 2, ",", "."); ?></td>
-                      <td class="align-middle"><?= ucwords($value->gnama)  ?></td>
-                      <td class="align-middle"><?= ucwords($value->snama)  ?></td>
-                      <td class="align-middle"><?= date("d-m-Y", strtotime($value->pcreated_at))  ?></td>
-                      <td class="align-middle">
-                        <a href="<?= base_url("produkcontroller/index/edit/" . $value->pid) ?>" class="btn btn-warning text-white" title="Edit"><i class="fas fa-edit"></i><span class="sr-only">EDIT</span></a>
-                        <a id="delete-produk" data-id="<?= $value->pid ?>" class="btn btn-danger text-white" title="Delete"><i class="fa fa-trash-o"></i> <span class="sr-only">Delete</span></a>
-                      </td>
+                      <th>KODE</th>
+                      <th>GAMBAR</th>
+                      <th>NAMA</th>
+                      <th class="text-nowrap">STOK AWAL</th>
+                      <th>QTY</th>
+                      <th class="text-nowrap">HARGA BELI</th>
+                      <th  class="text-nowrap">HARGA JUAL</th>
+                      <th>GUDANG</th>
+                      <th>SATUAN</th>
+                      <th  class="text-nowrap">CREATED AT</th>
+                      <th>ACTION</th>
                     </tr>
-                  <?php endforeach;  ?>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($produk as $key => $value) : ?>
+                      <tr>
+                        <td class="align-middle"><?= $value->pkode  ?></td>
+                        <td class="align-middle">
+                          <img width="100" src="<?= base_url("assets/images/products/") . $value->pgambar ?>" alt="">
+                        </td>
+                        <td class="align-middle"><?= ucwords($value->pnama) ?></td>
+                        <td class="align-middle"><?= $value->pstok_awal  ?></td>
+                        <td class="align-middle"><?= $value->pqty  ?></td>
+                        <td class="align-middle">Rp.<?= number_format($value->pharga_beli, 2, ",", "."); ?></td>
+                        <td class="align-middle">Rp.<?= number_format($value->pharga_jual, 2, ",", "."); ?></td>
+                        <td class="align-middle"><?= ucwords($value->gnama)  ?></td>
+                        <td class="align-middle"><?= ucwords($value->snama)  ?></td>
+                        <td class="align-middle"><?= date("d-m-Y", strtotime($value->pcreated_at))  ?></td>
+                        <td class="align-middle" width="150px">
+                          <a href="<?= base_url("produkcontroller/index/edit/" . $value->pid) ?>" class="btn btn-warning text-white" title="Edit"><i class="fas fa-edit"></i><span class="sr-only">EDIT</span></a>
+                          <a id="delete-produk" data-id="<?= $value->pid ?>" class="btn btn-danger text-white" title="Delete"><i class="fa fa-trash-o"></i> <span class="sr-only">Delete</span></a>
+                        </td>
+                      </tr>
+                    <?php endforeach;  ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
