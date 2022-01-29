@@ -165,6 +165,10 @@ let gudangSatuanTypeHandler = function () {
 }
 let stokMasukTypeHandler = function () {
    if ($("#form-stok-masuk").length > 0) {
+      let date = new Date()
+      if (!$("#form-stok-masuk input[name='faktur']").val()) {
+         $("#form-stok-masuk input[name='faktur']").val("STI" + date.getSeconds() + date.getDay() + date.getMonth() + 1 + date.getYear())
+      }
       $(document).on("change", "#select-produk", function () {
          let this_value = $(this).val()
          $.ajax({
@@ -181,15 +185,16 @@ let stokMasukTypeHandler = function () {
       $(document).on("keyup", "#form-stok-masuk input[name='qty']", function () {
          let stok_final = parseInt($("#form-stok-masuk #stok-final").val())
          let this_value = parseInt($(this).val())
+         let total = stok_final + this_value;
          if (this_value) {
-            $("#form-stok-masuk input[name='stok_awal']").val(stok_final + this_value)
+            $("#form-stok-masuk input[name='stok_awal']").val(total < 0 ? 0 : total)
          } else {
-            $("#form-stok-masuk input[name='stok_awal']").val(stok_final)
+            $("#form-stok-masuk input[name='stok_awal']").val(stok_final < 0 ? 0 : stok_final)
          }
 
       })
    }
-   if($("#stokmasuk-table").length>0){
+   if ($("#stokmasuk-table").length > 0) {
       $(document).on("click", "#delete-trstokmasuk", function () {
          let id = $(this).data("id")
          let tr = $(this).parents("tr");
@@ -217,14 +222,87 @@ let stokMasukTypeHandler = function () {
                      tr.remove();
                   }
                });
-   
+
             }
          })
       })
    }
 
 }
+let stokKeluarTypeHandler = function () {
+   if ($("#form-stok-keluar").length > 0) {
+      let date = new Date()
+      $("#form-stok-keluar input[name='faktur']").val("STO" + date.getSeconds() + 1 + date.getYear())
+      if ($("#aksi").val("edit")) { 
+         $("#form-stok-keluar input").attr("disabled", true)
+         $("#form-stok-keluar textarea").attr("disabled", true)
+         $("#form-stok-keluar select").attr("disabled", true)
+       }
+      $(document).on("change", "#select-produk", function () {
+         let this_value = $(this).val()
+         $.ajax({
+            type: "get",
+            url: base_url + "trstokkeluarcontroller/get_any/produk/" + this_value,
+            dataType: "json",
+            success: function (response) {
+               $("#form-stok-keluar input[name='stok_awal']").val(response.qty)
+               $("#form-stok-keluar #stok-final").val(response.qty)
+               $("#form-stok-keluar input[name='qty']").val("")
+            }
+         });
+      })
+      $(document).on("keyup", "#form-stok-keluar input[name='qty']", function () {
+         let stok_final = parseInt($("#form-stok-keluar #stok-final").val())
+         let this_value = parseInt($(this).val())
+         if (this_value) {
+            if (this_value > stok_final) {
+               $(this).val(stok_final < 0 ? 0 : stok_final)
+               $("#form-stok-keluar input[name='stok_awal']").val(0)
+            } else {
+               $("#form-stok-keluar input[name='stok_awal']").val(stok_final - this_value)
+            }
+         } else {
+            $("#form-stok-keluar input[name='stok_awal']").val(stok_final < 0 ? 0 : stok_final)
+         }
+
+      })
+   }
+   if ($("#stokkeluar-table").length > 0) {
+      $(document).on("click", "#delete-trstokkeluar", function () {
+         let id = $(this).data("id")
+         let tr = $(this).parents("tr");
+         Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+         }).then((result) => {
+            if (result.isConfirmed) {
+               $.ajax({
+                  type: "post",
+                  url: base_url + "trstokkeluarcontroller/delete",
+                  data: { "id": id },
+                  dataType: "json",
+                  success: function (response) {
+                     Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                     )
+                     tr.remove();
+                  }
+               });
+
+            }
+         })
+      })
+   }
+}
 $(document).ready(function () {
+   stokKeluarTypeHandler()
    stokMasukTypeHandler()
    gudangSatuanTypeHandler();
    distributorTypeHandler()

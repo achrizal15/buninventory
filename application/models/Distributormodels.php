@@ -45,7 +45,7 @@ class Distributormodels extends CI_Model
    }
    public function create($data)
    {
-      $data["created_at"] = date("Y-m-d", strtotime("now"));
+      $data["created_at"] = date("Y-m-d H:i:s", strtotime("now"));
       $this->db->insert("distributor", $data);
       return $this->db->affected_rows();
    }

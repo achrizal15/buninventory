@@ -55,7 +55,7 @@ class Produkmodels extends CI_Model
    }
    public function create($data)
    {
-      $data["created_at"] = date("Y-m-d", strtotime("now"));
+      $data["created_at"] = date("Y-m-d H:i:s", strtotime("now"));
       $this->db->insert("produk", $data);
       return $this->db->affected_rows();
    }

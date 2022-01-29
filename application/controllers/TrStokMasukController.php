@@ -69,9 +69,9 @@ class TrStokMasukController extends CI_Controller
    public function delete()
    {
       $id = $this->input->post("id");
-      $stokmasuk=$this->tsm->get($id);
-      $produk=$this->pm->get($stokmasuk->trproduk_id);
-      $this->pm->perbarui($produk->id,["qty"=>$produk->qty-$stokmasuk->trqty]);
+      // $stokmasuk=$this->tsm->get($id);
+      // $produk=$this->pm->get($stokmasuk->trproduk_id);
+      // $this->pm->perbarui($produk->id,["qty"=>$produk->qty-$stokmasuk->trqty]);
       echo $this->tsm->delete($id);
    }
 }

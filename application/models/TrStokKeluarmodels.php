@@ -24,7 +24,7 @@ class TrStokKeluarmodels extends CI_Model
       $this->db->select($select);
       $this->db->from("tr_stok_keluar tr");
       $this->db->join("produk p","tr.produk_id=p.id");
-      $this->db->order_by("tr.created_at", "desc");
+      $this->db->order_by("tr.created_at", "DESC");
       return $this->db->get()->result();
    }
 
@@ -38,7 +38,6 @@ class TrStokKeluarmodels extends CI_Model
       $table=[
          ["table"=>"tr_stok_keluar","alias"=>"tr"],
          ["table"=>"produk","alias"=>"p"],
-         ["table"=>"distributor","alias"=>"d"],
       ];
       $select="";
       foreach ($table as $key) {
@@ -47,7 +46,6 @@ class TrStokKeluarmodels extends CI_Model
       $this->db->select($select);
       $this->db->from("tr_stok_keluar tr");
       $this->db->join("produk p","tr.produk_id=p.id");
-      $this->db->join("distributor d","tr.distributor_id=d.id");
       $this->db->where("tr.id", $id);
       return $this->db->get()->row();
    }
@@ -66,7 +64,7 @@ class TrStokKeluarmodels extends CI_Model
    }
    public function create($data)
    {
-      $data["created_at"] = date("Y-m-d", strtotime("now"));
+      $data["created_at"] = date("Y-m-d H:i:s", strtotime("now"));
       $this->db->insert("tr_stok_keluar", $data);
       return $this->db->affected_rows();
    }
