@@ -9,6 +9,7 @@ class DistributorController extends CI_Controller
       $this->load->library("main_libraries");
       $this->load->library('session');
       $this->load->model("distributormodels", "dm");
+      is_login("distributor");
    }
    public function index()
    {

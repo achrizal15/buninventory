@@ -10,6 +10,7 @@ class ProdukController extends CI_Controller
       $this->load->model("Gudangmodels", "gm");
       $this->load->model("Satuanmodels", "sm");
       $this->load->library('session');
+      is_login("produk");
    }
    public function index($params = "view", $id = "")
    {

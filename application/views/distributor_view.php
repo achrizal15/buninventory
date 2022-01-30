@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang Rivaldo A</h1>
+            <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -31,9 +31,7 @@
                            <thead>
                               <tr>
                                  <th>NAMA</th>
-                                 <th>TELEPON</th>
-                                 <th>EMAIL</th>
-                                 <th>ALAMAT</th>
+                                
                                  <th>CREATED AT</th>
                                  <th>ACTION</th>
                               </tr>

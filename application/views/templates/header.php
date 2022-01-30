@@ -8,7 +8,12 @@
 <body>
    <!-- WRAPPER -->
    <div id="wrapper" >
-      <?php if ($blank == false) : ?>
+      <?php if(isset($blank)):  ?>
+      <?php  if ($blank == false) : ?>
          <?php include("navbar_include.php")  ?>
          <?php include("sidebar_include.php") ?>
       <?php endif;  ?>
+      <?php else:  ?>
+         <?php include("navbar_include.php")  ?>
+         <?php include("sidebar_include.php") ?>
+         <?php endif;  ?>

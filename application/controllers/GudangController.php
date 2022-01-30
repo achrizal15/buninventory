@@ -10,6 +10,7 @@ class GudangController extends CI_Controller
       $this->load->library('session');
       $this->load->model("gudangmodels", "dm");
       $this->load->model("satuanmodels", "sm");
+      is_login("gudang");
    }
    public function index()
    {

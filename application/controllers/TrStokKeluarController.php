@@ -11,6 +11,7 @@ class TrStokKeluarController extends CI_Controller
       $this->load->model("distributormodels", "dm");
       $this->load->model("trstokkeluarmodels", "tsm");
       $this->load->model("produkmodels", "pm");
+      is_login("stokkeluar");
    }
    public function index()
    {
@@ -70,9 +71,9 @@ class TrStokKeluarController extends CI_Controller
    public function delete()
    {
       $id = $this->input->post("id");
-      // $stokmasuk=$this->tsm->get($id);
-      // $produk=$this->pm->get($stokmasuk->trproduk_id);
-      // $this->pm->perbarui($produk->id,["qty"=>$produk->qty-$stokmasuk->trqty]);
+      $stokkeluar=$this->tsm->get($id);
+      $produk=$this->pm->get($stokkeluar->trproduk_id);
+      $this->pm->perbarui($produk->id,["qty"=>$produk->qty+$stokkeluar->trqty]);
       echo $this->tsm->delete($id);
    }
 }

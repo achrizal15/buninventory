@@ -67,10 +67,14 @@
                            </select>
                            <div class="invalid-feedback">Tidak boleh kosong</div>
                         </div>
+                        <div class="col-md-6 mb-3">
+                           <label for="validationCustom02">Stok Awal</label>
+                           <input type="text" value="<?= isset($stokin) ? $stokin->pqty : "" ?>" disabled class="form-control">
+                        </div>
                         <div class="col-md-6">
                            <div class="row">
                               <div class="col-md-6 mb-3">
-                                 <label for="validationCustom02">Stok Awal</label>
+                                 <label for="validationCustom02">Stok Ahir</label>
                                  <input type="text" id="stok-final" value="<?=  isset($stokin) ? $stokin->pqty - $stokin->trqty :""?>" disabled hidden>
                                  <input type="number" min="0" class="form-control" name="stok_awal" readonly id="validationCustom02" value="<?= isset($stokin) ? $stokin->pqty : "" ?>" required>
                                  <div class="valid-feedback">

@@ -11,6 +11,7 @@ class TrStokMasukController extends CI_Controller
       $this->load->model("distributormodels", "dm");
       $this->load->model("trstokmasukmodels", "tsm");
       $this->load->model("produkmodels", "pm");
+      is_login("stokmasuk");
    }
    public function index()
    {

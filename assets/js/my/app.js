@@ -233,7 +233,7 @@ let stokKeluarTypeHandler = function () {
    if ($("#form-stok-keluar").length > 0) {
       let date = new Date()
       $("#form-stok-keluar input[name='faktur']").val("STO" + date.getSeconds() + 1 + date.getYear())
-      if ($("#aksi").val("edit")) { 
+      if ($("#action").val()=="edit") { 
          $("#form-stok-keluar input").attr("disabled", true)
          $("#form-stok-keluar textarea").attr("disabled", true)
          $("#form-stok-keluar select").attr("disabled", true)
@@ -301,7 +301,44 @@ let stokKeluarTypeHandler = function () {
       })
    }
 }
+let roleTypeHandler = function () {
+   if ($("#role-table").length > 0) {
+  
+      $(document).on("click", "#delete-role", function () {
+         let id = $(this).data("id")
+         let tr = $(this).parents("tr");
+         Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+         }).then((result) => {
+            if (result.isConfirmed) {
+               $.ajax({
+                  type: "post",
+                  url: base_url + "rolecontroller/delete",
+                  data: { "id": id },
+                  dataType: "json",
+                  success: function (response) {
+                     Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                     )
+                     tr.remove();
+                  }
+               });
+
+            }
+         })
+      })
+   }
+}
 $(document).ready(function () {
+   roleTypeHandler()
    stokKeluarTypeHandler()
    stokMasukTypeHandler()
    gudangSatuanTypeHandler();
