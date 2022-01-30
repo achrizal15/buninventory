@@ -11,6 +11,11 @@ class Produkmodels extends CI_Model
       }
       return $result;
    }
+   public function total_produk(){
+      $this->db->select("*, SUM(qty) as total_produk");
+      $this->db->from("produk");
+   return   $this->db->get()->row();
+   }
    public function get_all()
    {
       $alias = [

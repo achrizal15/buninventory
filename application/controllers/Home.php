@@ -8,12 +8,18 @@ class Home extends CI_Controller
 		parent::__construct();
 		$this->load->library("session");
 		$this->load->model("roleaksesmodels", "ram");
+		$this->load->model("produkmodels", "pm");
+		$this->load->model("trstokmasukmodels", "tsm");
+		$this->load->model("trstokkeluarmodels", "tsk");
+		$this->load->library("main_libraries");
 		is_login("home");
 	}
 	public function index()
 	{
-		$this->load->view("templates/header");
-		$this->load->view('home');
-		$this->load->view("templates/footer");
+		$data["total_qty"]=$this->pm->total_produk();
+		$data["total_produk"]=count($this->pm->get_all());
+		$data["stok_in"]=count($this->tsm->get_all());
+		$data["stok_out"]=count($this->tsk->get_all());
+		$this->main_libraries->innerview("home",$data);
 	}
 }
