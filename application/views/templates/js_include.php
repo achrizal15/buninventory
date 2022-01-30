@@ -34,10 +34,12 @@
 <script src="<?= base_url() ?>assets/js/pages/forms-validations.init.min.js"></script>
 <script src="<?= base_url() ?>assets/plugins/select2/select2.min.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/forms-select2.init.js"></script>
-
 <script src="<?= base_url() ?>assets/js/pages/dashboard.init.js"></script>
 <script src="<?= base_url() ?>assets/js/pages/ui-dragdroppanel.init.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="<?= base_url() ?>assets/plugins/pwstrength-bootstrap/pwstrength-bootstrap.min.js"></script>
+<script src="<?= base_url() ?>assets/plugins/hideshowpassword/hideshowpassword.min.js"></script>
+<script src="<?= base_url() ?>assets/js/pages/forms-inputs.init.min.js"></script>
 <!-- App -->
 <script src="<?= base_url() ?>assets/js/app.min.js"></script>
 <script src="<?= base_url() ?>assets/js/my/app.js"></script>

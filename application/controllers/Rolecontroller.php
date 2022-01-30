@@ -8,7 +8,7 @@ class RoleController extends CI_Controller
       $this->load->library('session');
       $this->load->model("rolemodels", "rm");
       $this->load->model("roleaksesmodels", "ram");
-      is_login("distributor");
+      is_login("user");
    }
    public function index()
    {

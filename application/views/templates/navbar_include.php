@@ -12,7 +12,7 @@
                   <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://i.imgur.com/M701HZb.jpg" class="user-picture"" alt=" Avatar"> <span><?php   ?></span></a>
                      <ul class="dropdown-menu dropdown-menu-right logged-user-menu">
-                        <li><a href="#"><i class="ti-user"></i> <span><?= $this->session->userdata("nama")  ?></span></a></li>
+                        <li><a href="<?=base_url("usercontroller/action/edit/".$this->session->userdata("id"))?>"><i class="ti-user"></i> <span><?= $this->session->userdata("nama")  ?></span></a></li>
                         <li><a href="<?=base_url("authcontroller/logout")?>"><i class="ti-power-off"></i> <span>Logout</span></a></li>
                      </ul>
                   </li>
