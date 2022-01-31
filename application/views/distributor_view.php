@@ -31,7 +31,9 @@
                            <thead>
                               <tr>
                                  <th>NAMA</th>
-                                
+                                <th>TELEPON</th>
+                                <th>EMAIL</th>
+                                <th>ALAMAT</th>
                                  <th>CREATED AT</th>
                                  <th>ACTION</th>
                               </tr>

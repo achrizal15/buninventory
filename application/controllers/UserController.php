@@ -30,6 +30,7 @@ class UserController extends CI_Controller
    }
    public function add()
    {
+      // echo json_encode($this->input->post());
       $rules = [
          ["field" => "nama", "label" => "Nama", "rules" => "required",],
          ["field" => "email", "label" => "Email", "rules" => "required|is_unique[user.email]"],
@@ -37,7 +38,7 @@ class UserController extends CI_Controller
       $this->form_validation->set_rules($rules);
       if ($this->form_validation->run() != false) {
          $data = $this->input->post();
-         $data["role_id"] = 1;
+         $data["role_id"] = $this->input->post("role_id");
          $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
          $this->um->create($data);
          $this->session->set_flashdata("message","Data ditambahkan");

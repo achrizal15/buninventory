@@ -178,6 +178,7 @@ let stokMasukTypeHandler = function () {
             success: function (response) {
                $("#form-stok-masuk input[name='stok_awal']").val(response.qty)
                $("#form-stok-masuk #stok-final").val(response.qty)
+               $("#form-stok-masuk #qty-awal").val(response.qty)
                $("#form-stok-masuk input[name='qty']").val("")
             }
          });

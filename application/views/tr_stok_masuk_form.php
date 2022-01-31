@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                            <label for="validationCustom02">Stok Awal</label>
-                           <input type="text" value="<?= isset($stokin) ? $stokin->pqty : "" ?>" disabled class="form-control">
+                           <input type="text" id="qty-awal" value="<?= isset($stokin) ? $stokin->pqty : "" ?>" disabled class="form-control">
                         </div>
                         <div class="col-md-6">
                            <div class="row">
