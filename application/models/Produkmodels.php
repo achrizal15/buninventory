@@ -33,7 +33,12 @@ class Produkmodels extends CI_Model
       $this->db->join("satuan as s","s.id=p.satuan_id","left");
       return $this->db->get()->result();
    }
-
+   public function get_all_under_10(){
+      $this->db->select("*");
+      $this->db->from("produk");
+      $this->db->where("qty < 10");
+      return $this->db->get()->result();
+   }
    public function delete($id)
    {
       $this->db->delete("produk", ["id" => $id]);

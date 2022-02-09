@@ -5,7 +5,7 @@
 
     <div class="content-heading">
       <div class="heading-left">
-        <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
+        <h1 class="page-title">Selamat datang <?= $this->session->userdata("nama")  ?></h1>
       </div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -26,8 +26,10 @@
             </div>
             <div class="card-body">
               <?php echo $this->session->flashdata("message") ? custom_alert_messages("", $this->session->flashdata("message")) : "" ?>
+        <!-- MAS ALDO DIV DIBAWAH INI TOLONG DIHAPUS YA JANGAN LUPA PENUTUP DIVNYA -->
               <div class="table-responsive">
-                <table class="table table-bordered" id="produk-table" width="120%">
+
+                <table class="datatable-basic table table-bordered" id="produk-table" width="120%">
                   <thead>
                     <tr>
                       <th>KODE</th>
@@ -35,10 +37,10 @@
                       <th>NAMA</th>
                       <th>QTY</th>
                       <th class="text-nowrap">HARGA BELI</th>
-                      <th  class="text-nowrap">HARGA JUAL</th>
+                      <th class="text-nowrap">HARGA JUAL</th>
                       <th>GUDANG</th>
                       <th>SATUAN</th>
-                      <th  class="text-nowrap">CREATED AT</th>
+                      <th class="text-nowrap">CREATED AT</th>
                       <th>ACTION</th>
                     </tr>
                   </thead>
@@ -65,6 +67,7 @@
                   </tbody>
                 </table>
               </div>
+
             </div>
           </div>
         </div>

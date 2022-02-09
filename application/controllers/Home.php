@@ -20,6 +20,8 @@ class Home extends CI_Controller
 		$data["total_produk"]=count($this->pm->get_all());
 		$data["stok_in"]=count($this->tsm->get_all());
 		$data["stok_out"]=count($this->tsk->get_all());
+		$data["produk"]=$this->pm->get_all_under_10();
+
 		$this->main_libraries->innerview("home",$data);
 	}
 }

@@ -33,7 +33,7 @@
 					<div class="widget widget-metric_1 animate">
 						<span class="icon-wrapper custom-bg-lightseagreen"><i class="fa fa-shopping-cart"></i></span>
 						<div class="right">
-							<span class="value"><?= $total_qty->total_produk  ?>  <i class="change-icon change-up fa fa-sort-up text-indicator-green"></i></span>
+							<span class="value"><?= $total_qty->total_produk  ?> <i class="change-icon change-up fa fa-sort-up text-indicator-green"></i></span>
 							<span class="title">QTY PRODUK<span class="change text-indicator-green"></span></span>
 						</div>
 					</div>
@@ -59,7 +59,48 @@
 			</div>
 			<!-- END TOP METRICS -->
 
-		
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Stok Yang Wayae Beli</div>
+				</div>
+				<div class="card-body">
+
+					<table class="datatable-basic table table-bordered" id="produk-table" width="100%">
+						<thead>
+							<tr>
+								<th width="100">KODE</th>
+								<th width="100">GAMBAR</th>
+								<th>NAMA</th>
+								<th width="100">QTY</th>
+								<th>ACTION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($produk as $key => $value) : ?>
+								<tr>
+									<td class="align-middle"><?= $value->kode  ?></td>
+									<td class="align-middle">
+										<img width="100" src="<?= base_url("assets/images/products/") . $value->gambar ?>" alt="">
+									</td>
+									<td class="align-middle"><?= ucwords($value->nama) ?></td>
+									<td class="align-middle"><?= $value->qty  ?></td>
+									<td class="align-middle text-center" width="150px">
+							
+									<?php if(show_menu("stokmasuk")):  ?>
+										<a href="<?= base_url("trstokmasukcontroller/action/add") ?>" class="btn btn-success text-white" title="Add"><i class="fas fa-plus"></i><span class="sr-only">Tambah</span></a>
+										<?php else:  ?>
+											<!-- italic -->
+											<i>Anda tidak memiliki akses</i>
+											<?php endif;  ?>
+									</td>
+								</tr>
+							<?php endforeach;  ?>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
 			<!-- END PERFORMANCE INDEX -->
 		</div>
 	</div>

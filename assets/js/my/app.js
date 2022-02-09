@@ -374,6 +374,12 @@ let userTypeHandler = function () {
    }
 }
 $(document).ready(function () {
+   $(".datatable-basic").DataTable(
+      {
+         autoWidth: true,
+         scrollX:true
+      }
+   );
    userTypeHandler()
    roleTypeHandler()
    stokKeluarTypeHandler()

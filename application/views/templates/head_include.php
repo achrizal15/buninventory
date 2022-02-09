@@ -13,6 +13,13 @@
 <!-- Bootstrap Tour css -->
 <link href="<?= base_url() ?>assets/plugins/bootstrap-tour/bootstrap-tour-standalone.min.css" rel="stylesheet" type="text/css" />
 <!-- App css -->
+ <!-- Datatables core css -->
+ <link href="<?= base_url() ?>assets/plugins/datatables.net-bs4/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Datatables extensions css -->
+<link href="<?= base_url() ?>assets/plugins/datatables.net-buttons-bs4/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="<?= base_url() ?>assets/plugins/datatables.net-colreorder-bs4/colreorder.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
 <link href="<?= base_url() ?>assets/plugins/select2/select2.min.css" rel="stylesheet">
 <link href="<?= base_url() ?>assets/css/bootstrap-custom.min.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
