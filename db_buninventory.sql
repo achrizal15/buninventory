@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Feb 2022 pada 02.56
+-- Waktu pembuatan: 14 Feb 2022 pada 05.20
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.24
 
@@ -96,6 +96,25 @@ INSERT INTO `gudang` (`id`, `nama`, `created_at`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `produk`
+--
+
+CREATE TABLE `produk` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `kode` varchar(255) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `harga_beli` decimal(20,4) NOT NULL,
+  `harga_jual` decimal(20,4) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `gudang_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `satuan_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `role`
 --
 
@@ -181,6 +200,40 @@ INSERT INTO `satuan` (`id`, `nama`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tr_stok_keluar`
+--
+
+CREATE TABLE `tr_stok_keluar` (
+  `id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `kepada` varchar(255) NOT NULL,
+  `nama_kapal` varchar(255) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `catatan` text NOT NULL,
+  `faktur` varchar(255) NOT NULL,
+  `stok_ahir` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tr_stok_masuk`
+--
+
+CREATE TABLE `tr_stok_masuk` (
+  `id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `distributor_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `catatan` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `faktur` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `user`
 --
 
@@ -227,6 +280,12 @@ ALTER TABLE `gudang`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `role`
 --
 ALTER TABLE `role`
@@ -236,6 +295,18 @@ ALTER TABLE `role`
 -- Indeks untuk tabel `satuan`
 --
 ALTER TABLE `satuan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tr_stok_keluar`
+--
+ALTER TABLE `tr_stok_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tr_stok_masuk`
+--
+ALTER TABLE `tr_stok_masuk`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -267,6 +338,12 @@ ALTER TABLE `gudang`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `role`
 --
 ALTER TABLE `role`
@@ -277,6 +354,18 @@ ALTER TABLE `role`
 --
 ALTER TABLE `satuan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `tr_stok_keluar`
+--
+ALTER TABLE `tr_stok_keluar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tr_stok_masuk`
+--
+ALTER TABLE `tr_stok_masuk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
