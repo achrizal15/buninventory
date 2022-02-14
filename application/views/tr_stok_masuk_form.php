@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang Rivaldo A</h1>
+            <h1 class="page-title">Selamat Datang <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                <div class="card">
                   <div class="card-header">
-                     <h3 class="card-title">Tambah Stok Produk</h3>
+                     <h3 class="card-title"><?=ucwords($aksi)?> Stok Produk Masuk</h3>
 
                   </div>
                   <div class="card-body">
@@ -46,7 +46,7 @@
                                  <?php if ($stokin->trproduk_id == $value->pid) :  ?>
                                     <option selected value="<?= $value->pid ?>"><?= $value->pkode . " : " . $value->pnama  ?></option>
                                  <?php else :  ?>
-                                    <option value="<?= $value->pid ?>"><?= $value->pkode . " : " . $value->pnama  ?></option>
+                                    <option value="<?= $value->pid ?>"><?= $value->pkode . " : " . $value->pnama . "($value->snama)" ?></option>
                                  <?php endif;  ?>
                               <?php endforeach;  ?>
                            </select>

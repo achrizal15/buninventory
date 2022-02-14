@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
+            <h1 class="page-title">Selamat Datang  <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -27,7 +27,7 @@
                   <div class="card-body">
                      <?php echo $this->session->flashdata("message") ? custom_alert_messages("", $this->session->flashdata("message")) : "" ?>
                      <div style="overflow-x: auto;">
-                        <table class="table table-bordered" id="distributor-table">
+                        <table class="table table-bordered" id="distributor-table"> 
                            <thead>
                               <tr>
                                  <th>NAMA</th>

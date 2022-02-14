@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
+            <h1 class="page-title">Selamat Datang  <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                <div class="card">
                   <div class="card-header">
-                     <h3 class="card-title">Tambah Distributor</h3>
+                     <h3 class="card-title"><?=ucwords($aksi)?> Tambah Distributor</h3>
 
                   </div>
                   <div class="card-body">

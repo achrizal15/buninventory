@@ -15,7 +15,11 @@ class TrStokMasukController extends CI_Controller
    }
    public function index()
    {
-      $data["tsm"] = $this->tsm->get_all();
+      $key_kd = $this->input->get("distributor-name");
+      $data["distributor"] = $this->dm->get_all();
+      $key_dari = $this->input->get("dari");
+      $key_sampai = $this->input->get("sampai");
+      $data["tsm"] = $this->tsm->get_all($key_kd,$key_dari,$key_sampai);
       $this->main_libraries->innerview("tr_stok_masuk_view", $data);
    }
    public function action($params = "add", $id = "")

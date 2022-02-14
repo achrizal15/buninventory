@@ -5,12 +5,12 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
+            <h1 class="page-title">Selamat Datang  <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                <li class="breadcrumb-item"><a href="<?= base_url() ?>"><i class="fa fa-home"></i> Home</a></li>
-               <li class="breadcrumb-item active"><a href="#">Gudang & Satuan</a></li>
+               <li class="breadcrumb-item active"><a href="#">Gudang dan Satuan</a></li>
                <!-- <li class="breadcrumb-item active">Current</li> -->
             </ol>
          </nav>

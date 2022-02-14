@@ -49,7 +49,7 @@ class AuthController extends CI_Controller
             $this->session->set_userdata($user_data);
             redirect(base_url());
          }else{
-            $this->session->set_flashdata("message", "Login error");
+            $this->session->set_flashdata("message", "Password error");
             redirect(base_url("authcontroller/login"));
          }
       }

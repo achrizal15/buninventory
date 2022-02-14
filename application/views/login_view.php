@@ -2,8 +2,9 @@
   <div class="auth-box register">
     <div class="content">
       <div class="header">
-        <div class="logo text-center">BUNINVENTORY</div>
-        <p class="lead">Login</p>
+        <div class="logo text-center">STOCK BARANG</div>
+        <div class="logo text-center">PT.BERLIAN UTAMA NIAGA</div>
+        <p class="lead">LOGIN</p>
         <div>
           <?php echo $this->session->flashdata("message") ? custom_alert_messages("error", $this->session->flashdata("message")) : "" ?>
         </div>

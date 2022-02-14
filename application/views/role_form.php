@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang <?= $this->session->userdata("nama")  ?></h1>
+            <h1 class="page-title">Selamat Datang <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

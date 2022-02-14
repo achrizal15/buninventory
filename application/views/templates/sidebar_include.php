@@ -10,6 +10,7 @@
                <a href="#produk" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("produkcontroller") ?>"><i class="ti-package"></i></i> <span class="title">Produk </span> <i class="icon-submenu ti-angle-left"></i></a>
                <div id="produk" class="collapse">
                   <ul class="submenu">
+                     <li><a href="<?= base_url("produkcontroller/index/restock") ?>" class="">Daftar Produk Harus Retock</a></li>
                      <li><a href="<?= base_url("produkcontroller/index/view") ?>" class="">Daftar Produk</a></li>
                      <li><a href="<?= base_url("produkcontroller/index/add") ?>" class="">Tambah Produk</a></li>
                   </ul>
@@ -56,6 +57,13 @@
             </div>
          </li>
          <?php endif  ?>
+         <?php if (show_menu("laporan")) :  ?>
+            <li>
+               <a href="<?= base_url("laporancontroller") ?>" class="<?= active_sidebar("laporancontroller") ?>">
+                  <i class="ti-folder"></i> <span class="title">Laporan</span>
+               </a>
+            </li>
+         <?php endif;  ?>
          <?php if(show_menu("user")):  ?>
          <li class="panel">
             <a href="#user" data-toggle="collapse" data-parent="#sidebar-nav-menu" class="<?= active_sidebar("usercontroller") ?>"><i class="ti-user"></i> <span class="title">User Setting</span> <i class="icon-submenu ti-angle-left"></i></a>

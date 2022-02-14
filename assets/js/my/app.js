@@ -37,6 +37,13 @@ let distributorTypeHandler = function () {
 }
 let produkTypeHandler = function () {
    if ($("#produk-table").length > 0) {
+      // FILTER
+      $(document).on("change", ".filter-gudang", function () {
+         window.location.href = $(this).val();
+      })
+      $(document).on("change",".filter-satuan",function(){
+         window.location.href = $(this).val();
+      })
       $(document).on("click", "#delete-produk", function () {
          let id = $(this).data("id")
          let tr = $(this).parents("tr");
@@ -234,11 +241,11 @@ let stokKeluarTypeHandler = function () {
    if ($("#form-stok-keluar").length > 0) {
       let date = new Date()
       $("#form-stok-keluar input[name='faktur']").val("STO" + date.getSeconds() + 1 + date.getYear())
-      if ($("#action").val()=="edit") { 
+      if ($("#action").val() == "edit") {
          $("#form-stok-keluar input").attr("disabled", true)
          $("#form-stok-keluar textarea").attr("disabled", true)
          $("#form-stok-keluar select").attr("disabled", true)
-       }
+      }
       $(document).on("change", "#select-produk", function () {
          let this_value = $(this).val()
          $.ajax({
@@ -304,7 +311,7 @@ let stokKeluarTypeHandler = function () {
 }
 let roleTypeHandler = function () {
    if ($("#role-table").length > 0) {
-  
+
       $(document).on("click", "#delete-role", function () {
          let id = $(this).data("id")
          let tr = $(this).parents("tr");
@@ -377,7 +384,7 @@ $(document).ready(function () {
    $(".datatable-basic").DataTable(
       {
          autoWidth: true,
-         scrollX:true
+         scrollX: true
       }
    );
    userTypeHandler()

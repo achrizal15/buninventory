@@ -1,3 +1,24 @@
-.select2-container .select2-selection--single{
-   height: 38px !important;
+table.table-laporan.dataTable th {
+	vertical-align: middle !important;
+}
+
+table.table-laporan thead .sorting:before,
+table.table-laporan thead .sorting:after,
+table.table-laporan thead .sorting_asc:before,
+table.table-laporan thead .sorting_asc:after,
+table.table-laporan thead .sorting_desc:before,
+table.table-laporan thead .sorting_desc:after,
+table.table-laporan thead .sorting_asc_disabled:before,
+table.table-laporan thead .sorting_asc_disabled:after,
+table.table-laporan thead .sorting_desc_disabled:before,
+table.table-laporan thead .sorting_desc_disabled:after {
+	bottom: auto !important;
+}
+
+table.table-laporan thead .sorting:after,
+table.table-laporan thead .sorting_asc:after,
+table.table-laporan thead .sorting_desc:after,
+table.table-laporan thead .sorting_asc_disabled:after,
+table.table-laporan thead .sorting_desc_disabled:after {
+	top: 2.5em !important;
 }

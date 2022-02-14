@@ -11,7 +11,7 @@ class TrStokKeluarmodels extends CI_Model
       }
       return $result;
    }
-   public function get_all()
+   public function get_all($key_dari="",$key_sampai="")
    {
       $table=[
          ["table"=>"tr_stok_keluar","alias"=>"tr"],
@@ -24,10 +24,24 @@ class TrStokKeluarmodels extends CI_Model
       $this->db->select($select);
       $this->db->from("tr_stok_keluar tr");
       $this->db->join("produk p","tr.produk_id=p.id");
+      if($key_dari!="" && $key_sampai!=""){
+         $this->db->where("tr.created_at >=",$key_dari);
+         $this->db->where("tr.created_at <=",date("Y-m-d H:i:s",strtotime($key_sampai." 23:59:59")));
+      }
       $this->db->order_by("tr.created_at", "DESC");
       return $this->db->get()->result();
    }
-
+   public function get_total_stok_out($produk,$from="",$to=""){
+      $this->db->select("*, SUM(qty) as qty_out");
+      $this->db->from("tr_stok_keluar");
+      $this->db->where("produk_id",$produk);
+      if ($from != null && $to != null) {
+         $this->db->where("created_at >", $from);
+         $this->db->where("created_at <=", date("Y-m-d H:i:s", strtotime($to . " 23:59:59")));
+      }
+      $this->db->group_by("produk_id");
+      return $this->db->get()->row();
+   }
    public function delete($id)
    {
       $this->db->delete("tr_stok_keluar", ["id" => $id]);

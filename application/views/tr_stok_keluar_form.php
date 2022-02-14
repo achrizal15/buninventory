@@ -5,7 +5,7 @@
 
       <div class="content-heading">
          <div class="heading-left">
-            <h1 class="page-title">Selamat datang  <?= $this->session->userdata("nama")  ?></h1>
+            <h1 class="page-title">Selamat Datang  <?= $this->session->userdata("nama")  ?></h1>
          </div>
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -22,7 +22,7 @@
             <div class="col-md-12">
                <div class="card">
                   <div class="card-header">
-                     <h3 class="card-title">Keluar Stok Produk</h3>
+                     <h3 class="card-title"><?=$aksi=="edit"?$aksi="Show":$aksi="Add"?> Stok Produk Keluar</h3>
                   </div>
                   <div class="card-body">
                      <form action="<?= base_url("trstokkeluarcontroller/") . $aksi ?>" id="form-stok-keluar" class="needs-validation" novalidate method="post" enctype="multipart/form-data">
@@ -94,7 +94,8 @@
                         </div>
 
                         <div class="col-md-6">
-                           <?php if ($aksi == "add") :  ?>
+                           
+                           <?php if (strtolower($aksi) == "add") :  ?>
                               <button type="submit" class="btn btn-primary">Simpan</button>
                               <a href="" class="btn btn-danger">Reset</a>
                            <?php else :  ?>
