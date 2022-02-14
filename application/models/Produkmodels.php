@@ -46,8 +46,8 @@ class Produkmodels extends CI_Model
       $this->db->from("produk");
       $this->db->where("qty < 24");
       if ($from != null && $to != null) {
-         $this->db->where("created_at >=", date("Y-m-d", strtotime($from)));
-         $this->db->where("created_at <", date("Y-m-d H:i:s", strtotime($from . " 23:59:59")));
+         $this->db->where("created_at >", date("Y-m-d", strtotime($from)));
+         $this->db->where("created_at <", date("Y-m-d H:i:s", strtotime($to . " 23:59:59")));
       }
       return $this->db->get()->result();
    }

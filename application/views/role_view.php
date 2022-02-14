@@ -50,6 +50,7 @@
                                     <td><?= $this->ram->get_roles_akses($v->id, "stokmasuk") ? "YES" : "NO" ?></td>
                                     <td><?= $this->ram->get_roles_akses($v->id, "stokkeluar") ? "YES" : "NO" ?></td>
                                     <td><?= $this->ram->get_roles_akses($v->id, "user") ? "YES" : "NO" ?></td>
+                                    <td><?= $this->ram->get_roles_akses($v->id, "laporan") ? "YES" : "NO" ?></td>
                                     <td class="align-middle"><?= date("d-m-Y", strtotime($v->created_at))  ?></td>
                                     <td class="align-middle" width="150px">
                                        <?php if($v->id!=1):  ?>

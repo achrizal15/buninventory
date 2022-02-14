@@ -27,7 +27,6 @@ class ProdukController extends CI_Controller
          $data["gudang"] = $this->gm->get_all();
          $data["satuan"] = $this->sm->get_all();
       } elseif ($params == "edit") {
-
          $data["aksi"] = $params;
          $view = "produk_form";
          $data["gudang"] = $this->gm->get_all();
