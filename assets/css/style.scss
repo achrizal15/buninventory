@@ -1,4 +1,17 @@
+table.table-laporan.dataTable th {
+	vertical-align: middle !important;
+}
 
-table.table-laporan.dataTable th{
-   vertical-align: middle !important;
+.footer-filter {
+	vertical-align: bottom !important;
+	display: flex;
+	align-items: flex-end;
+	height: 100%;
+	padding-bottom: 3px;
+	vertical-align: bottom;
+	margin-top: 0;
+	//responsif min 766 width screen
+	@media (max-width: 766px) {
+	margin-top: 8px;
+	}
 }

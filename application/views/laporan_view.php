@@ -27,6 +27,26 @@
               <?php echo $this->session->flashdata("message") ? custom_alert_messages("", $this->session->flashdata("message")) : "" ?>
               <form action="" method="get">
                 <div class="row mb-3">
+                  <div class="col-md-2">
+                    <label for="validationCustom02">Gudang</label>
+                    <select name="gudang-name" class="form-control">
+                      <option value="all" <?= isset($_GET["gudang-name"]) ? $_GET["gudang-name"] == "all" ? "selected" : "" : "" ?>>Tampil Semua</option>
+                      <?php foreach ($gudang as $key => $value) : ?>
+                        <option <?= isset($_GET["gudang-name"]) ? $_GET["gudang-name"] == $value->nama ? "selected" : "" : "" ?> value="<?= $value->nama ?>">
+                          <?= ucwords($value->nama) ?>
+                        </option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="validationCustom02">Satuan</label>
+                    <select name="satuan-name" class="form-control">
+                      <option value="all" <?= isset($_GET["satuan-name"]) ? $_GET["satuan-name"] == "all" ? "selected" : "" : "" ?>>Tampil Semua</option>
+                      <?php foreach ($satuan as $key => $value) : ?>
+                        <option <?= isset($_GET["satuan-name"]) ? $_GET["satuan-name"] == $value->nama ? "selected" : "" : "" ?> value="<?= $value->nama ?>"><?= ucwords($value->nama) ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
                   <div class="col-md-3">
                     <label for="validationCustom02">Dari</label>
                     <input name="dari" type="date" class="form-control" value="<?= isset($_GET["dari"]) ? $_GET["dari"] : date("Y-m-d", strtotime("first day of this month")) ?>">
@@ -37,13 +57,16 @@
                     <input name="sampai" type="date" class="form-control" value="<?= isset($_GET["sampai"]) ? $_GET["sampai"] : date("Y-m-d", strtotime("now")) ?>">
                     </select>
                   </div>
-                  <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary" style="position: absolute; bottom:1px">FILTER</button>
+                  <div class="col-md-2" >
+                    <div class="footer-filter">
+                      <button type="submit" class="btn btn-primary">FILTER</button>
+                      </div>
+                  
                   </div>
 
                 </div>
               </form>
-              <div class="table-responsive">
+         
                 <table class="datatable-basic table table-bordered table-laporan" id="stokmasuk-table" width="120%">
                   <thead>
                     <tr>
@@ -68,12 +91,12 @@
                         <td><?= $p["produk"]->pqty  ?></td>
                         <td><?= $p["in"]  ?></td>
                         <td><?= $p["out"]  ?></td>
-                        <td class="<?= $p["total"] > 0 ? "text-success" : "text-danger" ?>"><?= $p["total"] > 0 ? "+" .$p["total"] : $p["total"]?></td>
+                        <td class="<?= $p["total"] > 0 ? "text-success" : "text-danger" ?>"><?= $p["total"] > 0 ? "+" . $p["total"] : $p["total"] ?></td>
                       </tr>
                     <?php endforeach  ?>
                   </tbody>
                 </table>
-              </div>
+       
             </div>
           </div>
         </div>
